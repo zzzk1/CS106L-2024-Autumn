@@ -16,7 +16,7 @@
 
 #include "utils.h"
 
-std::string kYourName = "STUDENT TODO"; // Don't forget to change this!
+std::string kYourName = "Zhengke Zhou"; // Don't forget to change this!
 
 /**
  * Takes in a file name and returns a set containing all of the applicant names as a set.
@@ -30,7 +30,14 @@ std::string kYourName = "STUDENT TODO"; // Don't forget to change this!
  * to also change the corresponding functions in `utils.h`.
  */
 std::set<std::string> get_applicants(std::string filename) {
-  // STUDENT TODO: Implement this function.
+  std::ifstream ifs(filename);
+
+  std::string line;
+  std::set<std::string> result;
+  while (std::getline(ifs, line)) {
+    result.insert(line);
+  }
+  return result;
 }
 
 /**
@@ -42,7 +49,15 @@ std::set<std::string> get_applicants(std::string filename) {
  * @return          A queue containing pointers to each matching name.
  */
 std::queue<const std::string*> find_matches(std::string name, std::set<std::string>& students) {
-  // STUDENT TODO: Implement this function.
+  std::queue<const std::string*> result;
+
+  for (auto it = students.begin(); it != students.end(); it++) {
+    if (*it == name) {
+      result.push(&(*it));
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -56,7 +71,11 @@ std::queue<const std::string*> find_matches(std::string name, std::set<std::stri
  *                Will return "NO MATCHES FOUND." if `matches` is empty.
  */
 std::string get_match(std::queue<const std::string*>& matches) {
-  // STUDENT TODO: Implement this function.
+  if (matches.empty()) {
+    return "NO MATCHES FOUND.";
+  } else {
+    return *(matches.front());
+  }
 }
 
 /* #### Please don't modify this call to the autograder! #### */
