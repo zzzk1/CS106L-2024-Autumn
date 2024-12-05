@@ -4,10 +4,11 @@
  */
 
 /* #### Please don't change this line! #### */
+#include "class.h"
 int run_autograder();
 
 int main() {
-  // STUDENT TODO: Construct an instance of your class!
+  Student student();
 
   /* #### Please don't change this line! #### */
   return run_autograder();
