@@ -15,11 +15,17 @@ public:
   size_t size() const;
   void set_friend(size_t index, const std::string& name);
 
-  /** 
-   * STUDENT TODO:
-   * Your custom operators and special member functions will go here!
-   */
-
+  //part1
+  friend std::ostream& operator << (std::ostream& out, const User& user);
+  //part2
+  User(const User& user);
+  ~User();
+  User& operator=(const User& user);
+  User(User&& user) = delete;
+  User& operator=(User&& user) = delete;
+  //part3
+  User& operator += (User& user);
+  bool operator < ( const User& other) const;
 private:
   std::string _name;
   std::string* _friends;
